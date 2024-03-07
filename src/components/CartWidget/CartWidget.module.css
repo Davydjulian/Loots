@@ -1,0 +1,13 @@
+.carrito {
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    align-items: center;
+    display: flex;
+    gap: .5rem;
+}
+.cart {
+    max-width: 2rem;
+    color: white;
+}

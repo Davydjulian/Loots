@@ -1,0 +1,13 @@
+.bienvenida {
+    color: black;
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
