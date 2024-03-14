@@ -1,0 +1,7 @@
+.list {
+    display: grid;
+    grid: auto-flow / 1fr 1fr 1fr;
+    padding: 3rem;
+    max-width: 100%;
+    gap: 2rem;
+}
