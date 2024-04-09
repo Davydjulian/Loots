@@ -1,11 +1,14 @@
 import styles from '../ItemList/ItemList.module.css'
-import Item from '../Item/Item'
-
+import Item from "../Item/Item"
 
 const ItemList = ({ products }) => {
     return (
-        <div className={styles.list}>
-            {products.map(product => { return  <Item  key={product.id} {...product}/>})}
+        <div style={{ display: 'flex', flexDirection: 'column'}} onClick={() => console.log('hice click en itemlist')}>
+            {
+                products?.map((product) => {
+                    return <Item key={product.id} {...product}/>
+                })
+            }
         </div>
     )
 }

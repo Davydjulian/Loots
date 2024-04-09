@@ -1,33 +1,58 @@
 import styles from  './ItemListContainer.module.css';
-import { useState, useEffect } from 'react';
-import { getProducts, getProductsByCategory } from '../asyncMock';
+import { useState, useEffect, memo } from 'react';
+// import { getProducts, getProductsByCategory } from '../asyncMock';
 import ItemList from '../ItemList/ItemList';
 import { useParams } from "react-router-dom"
+import { getDocs, collection, QuerySnapshot } from "firebase/firestore"
+import { db } from "../../services/firebase/firebaseConfig"
+
+
+const ItemListMemorized = memo(ItemList)
 
 
 const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([])
+    const [render, setRender] = useState(false)
 
     const { categoryId } = useParams()
 
+    const { showNotification } = useParams()
+
+    useEffect(() => {
+        setTimeout(() => {
+            setRender(prev => !prev)
+        }, 1000)
+    }, [])
+    
+    
     useEffect(() => {
 
-        const asyncFunction = categoryId ?  getProductsByCategory : getProducts
+        const productsCollection = categoryId ? (
+            query(collection(db, 'products'), where('category', '==', categoryId))
+        ) : (
+            collection(db, 'products')
+        )
 
-        asyncFunction(categoryId)
-            .then(result => {
-                setProducts(result)
+        getDocs(productsCollection)
+            .then(querySnapshot => {
+                const productsAdapted = querySnapshot.docs.map(doc => {
+                    const data = doc.data()
+
+                    return { id: doc.id, ...data}
+                })
+
+                setProducts(productsAdapted)
             })
-            .catch(error => {
-                console.log(error)
-            })
+            .catch(() => {
+                showNotification('error', 'Hubo un error cargado los productos')
+            })        
     }, [categoryId])
 
 
     return (
         <div className={styles.container}>
             <h1 className={styles.bienvenida}>{ greeting }</h1>
-            <ItemList products={products}/>
+            <ItemListMemorized products={products}/>
         </div>
     )
 }

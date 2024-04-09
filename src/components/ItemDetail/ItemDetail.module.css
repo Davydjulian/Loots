@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+article {
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 5rem;
+    max-width: 100%;
+}
+
+.titulo {
+    font-size: 3rem;
+}
+
+.descripcion {
+    font-size: 1.5rem;
+    color: #505050;
+    font-weight: 300;
+    margin-block: 1rem;
+}
+
+.categoria {
+    font-size: 1rem;
+    font-weight: 300;
+    color: gray;
+    margin-block: 1rem;
+}
+
+.foto {
+    width:  50vw;
+    box-sizing: border-box;
+}
+
+
