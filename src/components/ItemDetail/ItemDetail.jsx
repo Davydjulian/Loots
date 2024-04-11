@@ -1,38 +1,109 @@
-import { useState } from "react"
-import ItemCount from "../ItemCount/ItemCount"
-import styles from "../ItemDetail/ItemDetail.module.css"
-import { Link } from "react-router-dom"
+import { useState, useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { CartContext } from '../../context/CartContext'
+import { useNotification } from '../../notification/hooks/useNotification'
 
-const ItemDetail = ({ id, name, img, price, category, description, stock }) => {
+const InputCount = ({ onAdd, stock, initial= 1 }) => {
+    const [count, setCount] = useState(initial)
 
-    const [quantityAdded, setQuantityAdded] = useState(0)
-
-    const handleOnAdd = (quantity) => {
-        setQuantityAdded(quantity)
+    const handleChange = (e) => {
+        if(e.target.value <= stock) {
+            setCount(e.target.value)
+        }
     }
 
     return (
-    <article>
-        <section>
-        <img className={styles.foto} src={img}/>
         <div>
-            <h2 className={styles.titulo}>{name}</h2>
-            <h4 className={styles.descripcion}>Descripción: {description}</h4>
-            <h3 className={styles.precio}>Precio: $ {price}</h3>
-            <h4 className={styles.categoria}>Marca: {category}</h4>
-            {/* <ItemCount stock={stock}/> */}
+            <input type='number' onChange={handleChange} value={count}/>
+            <button onClick={() => onAdd(count)}>Agregar al carrito</button>
         </div>
-        </section>
-        <footer>
-            {
-                quantityAdded > 0 ? (
-                    <Link to="/cart">Finalizar compra</Link>
-                ) : (
-                    <ItemCount initial={1} stock={stock} onAdd={handleOnAdd}/>
-                )
-            }
-        </footer>
-    </article>
+    )
+}
+
+const ButtonCount = ({ onAdd, stock, initial = 1 }) => {
+    const [count, setCount] = useState(initial)
+
+    const increment = () => {
+        if(count < stock) {
+            setCount(count + 1)
+        }
+
+    }
+
+    const decrement = () => {
+            setCount(count - 1)
+    }
+
+    return (
+        <div>
+            <p>{count}</p>
+            <button onClick={decrement}>-</button>
+            <button onClick={increment}>+</button>
+            <button onClick={() => onAdd(count)}>Agregar al carrito</button>
+        </div>
+    )
+}
+
+
+const ItemDetail = ({ id, name, category, img, price, stock, description}) => {
+
+    const [inputType, setInputType] = useState('button')
+
+    // const [quantity, setQuantity] = useState(0)
+
+    const ItemCount = inputType === 'input' ? InputCount : ButtonCount
+
+    const { addItem, isInCart } = useContext(CartContext)
+
+    const { showNotification } = useNotification()
+
+    const handleOnAdd = (quantity) => {
+        const objProductToAdd = {
+            id, name, price, quantity
+        }
+        console.log(objProductToAdd)
+        showNotification('success', `Se agrego correctamente ${quantity} ${name}`)
+        // setQuantity(quantity)
+
+        addItem(objProductToAdd)
+    }
+
+    return (
+        <article>
+            <button onClick={() => setInputType(inputType === 'input' ? 'button' : 'input')}>
+                Cambiar contador
+            </button>
+            <header>
+                <h2>
+                    {name}
+                </h2>
+            </header>
+            <picture>
+                <img src={img} alt={name} style={{ width: 100}}/>
+            </picture>
+            <section>
+                <p>
+                    Categoria: {category}
+                </p>
+                <p>
+                    Descripción: {description}
+                </p>
+                <p>
+                    Precio: {price}
+                </p>
+            </section>           
+            <footer>
+                {
+                    !isInCart(id) ? (
+                        <ItemCount onAdd={handleOnAdd} stock={stock}/>
+                    ) : (
+                        <>
+                            <Link to='/cart'>Finalizar compra</Link>
+                        </>
+                    )
+                }
+            </footer>
+        </article>
     )
 }
 
