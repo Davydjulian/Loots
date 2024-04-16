@@ -5,24 +5,16 @@ import { useParams } from "react-router-dom";
 import { getDocs, collection, query, where } from "firebase/firestore";
 import { db } from "../../services/firebase/firebaseConfig";
 import { NotificationContext } from '../../notification/NotificationsService';
+import nike from './assets/nike.png'
 
 
 const ItemListMemorized = memo(ItemList);
 
 const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([]);
-    const [render, setRender] = useState(false);
-
     const { categoryId } = useParams();
     const showNotification = useContext(NotificationContext);
 
-    useEffect(() => {
-        setTimeout(() => {
-            setRender(prev => !prev);
-        }, 1000);
-    }, []);
-    
-    
     useEffect(() => {
         const fetchProducts = async () => {
             try {
@@ -34,19 +26,25 @@ const ItemListContainer = ({ greeting }) => {
 
                 const querySnapshot = await getDocs(productsCollection);
                 const productsAdapted = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-
                 setProducts(productsAdapted);
             } catch (error) {
-                showNotification('error', 'Hubo un error cargando los productos');
+                // showNotification('error', 'Hubo un error cargando los productos');
             }
         };
-
         fetchProducts();
     }, [categoryId, showNotification]);
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.bienvenida}>{ greeting }</h1>
+            <article className={styles.banner}>
+                <div className={styles.textobanner}>
+                    <h1>Conoce las nuevas Big Bubble Air Max Day (2024)</h1>
+                    <button className={styles.boton}>Comprar Ahora</button>
+                </div>
+                <div className={styles.diseno}>
+                    <img className={styles.imgbanner} src={nike} alt="nike-banner"/>
+                </div>
+            </article>
             <ItemListMemorized products={products}/>
         </div>
     );
