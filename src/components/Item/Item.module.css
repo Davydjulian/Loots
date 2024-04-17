@@ -1,8 +1,8 @@
 .card {
   background: linear-gradient(#ffffff, #ffffff) padding-box,
-              linear-gradient(145deg, transparent 25%,#e81cff, #40c9ff) border-box;
+              linear-gradient(145deg, transparent 25%,#e5f656, #40c9ff) border-box;
   border: .2rem solid transparent;
-  border-radius: 1.8rem;
+  border-radius: 0;
   display: block;
   padding: 2rem;
   align-items: stretch;
@@ -37,5 +37,5 @@
 }
 
 .boton:hover {
-    background-image: linear-gradient(50deg,#e81cff, #40c9ff);
+    background-image: linear-gradient(50deg,#e5f656, #40c9ff);
 }

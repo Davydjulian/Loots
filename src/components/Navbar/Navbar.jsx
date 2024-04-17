@@ -35,8 +35,8 @@ const Navbar = () => {
                     <Link to='/category/jordan'>Jordan</Link>
                     <Link to='/category/adidas'>Adidas</Link> */}
                     {categories.map(category => (
-                <Link key={category.id} to={`/category/${category.id}`}>{category.name}</Link>
-            ))}
+                    <Link key={category.id} to={`/category/${category.name.toLowerCase()}`}>{category.name}</Link>
+                ))}
                 </div>
                 <CartWidget />
             </nav>
