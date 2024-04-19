@@ -3,6 +3,11 @@
 
 main {
     font-family: "Roboto", sans-serif;
-    margin-top: 5rem;
-    margin-inline: 6rem;
+    margin-top: 2rem;
+    margin-inline: 3rem;
+}
+
+.detalle {
+    font-size: 1.5rem;
+    font-weight: 400;
 }

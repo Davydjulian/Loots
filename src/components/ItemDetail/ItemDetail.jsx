@@ -2,6 +2,7 @@ import { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../../context/CartContext'
 import { useNotification } from '../../notification/hooks/useNotification'
+import styles from '../ItemDetail/ItemDetail.module.css'
 
 const InputCount = ({ onAdd, stock, initial= 1 }) => {
     const [count, setCount] = useState(initial)
@@ -36,7 +37,7 @@ const ButtonCount = ({ onAdd, stock, initial = 1 }) => {
 
     return (
         <div>
-            <p>{count}</p>
+            <p >{count}</p>
             <button onClick={decrement}>-</button>
             <button onClick={increment}>+</button>
             <button onClick={() => onAdd(count)}>Agregar al carrito</button>
@@ -69,30 +70,24 @@ const ItemDetail = ({ id, name, category, img, price, stock, description}) => {
     }
 
     return (
-        <article>
-            <button onClick={() => setInputType(inputType === 'input' ? 'button' : 'input')}>
-                Cambiar contador
-            </button>
+        <article  className={styles.card}>
             <header>
-                <h2>
-                    {name}
-                </h2>
+                <img className={styles.foto} src={img} alt={name}/>
             </header>
-            <picture>
-                <img src={img} alt={name} style={{ width: 100}}/>
-            </picture>
             <section>
-                <p>
+                <h2 className={styles.titulo}> {name} </h2>
+                <p className={styles.categoria}>
                     Categoria: {category}
                 </p>
-                <p>
+                <p className={styles.descripcion}>
                     Descripción: {description}
                 </p>
                 <p>
                     Precio: {price}
                 </p>
-            </section>           
-            <footer>
+                <button className={styles.boton} onClick={() => setInputType(inputType === 'input' ? 'button' : 'input')}>
+                Cambiar contador
+            </button>
                 {
                     !isInCart(id) ? (
                         <ItemCount onAdd={handleOnAdd} stock={stock}/>
@@ -102,7 +97,8 @@ const ItemDetail = ({ id, name, category, img, price, stock, description}) => {
                         </>
                     )
                 }
-            </footer>
+            </section>
+            
         </article>
     )
 }

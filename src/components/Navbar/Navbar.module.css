@@ -8,7 +8,13 @@
   }
 
 a {
+    font-size: 1.2rem;
     text-decoration: none;
+}
+
+a:hover {
+    color: #5ee63c;
+    font-weight: 600;
 }
 
 a:visited {
@@ -16,7 +22,7 @@ a:visited {
 }
 
 a:active {
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .navbar {

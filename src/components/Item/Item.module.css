@@ -2,7 +2,7 @@
   background: linear-gradient(#ffffff, #ffffff) padding-box,
               linear-gradient(145deg, transparent 25%,#e5f656, #40c9ff) border-box;
   border: .2rem solid transparent;
-  border-radius: 0;
+  border-radius: .5rem;
   display: block;
   padding: 2rem;
   align-items: stretch;

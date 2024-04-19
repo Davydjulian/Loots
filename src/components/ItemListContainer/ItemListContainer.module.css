@@ -43,3 +43,14 @@
  .textobanner {
     margin-left: 3rem;
  }
+
+ .titulo {
+   display:flex;
+   font-family: "Roboto", sans-serif;
+   background-color: black;
+   color: white;
+   align-items: center;
+   justify-content: center;
+   max-width: 100%;
+   font-size: 3rem;
+ }

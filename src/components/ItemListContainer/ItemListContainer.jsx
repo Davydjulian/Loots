@@ -45,6 +45,7 @@ const ItemListContainer = ({ greeting }) => {
                     <img className={styles.imgbanner} src={nike} alt="nike-banner"/>
                 </div>
             </article>
+            <h1 className={styles.titulo}>Todos los Productos</h1>
             <ItemListMemorized products={products}/>
         </div>
     );
