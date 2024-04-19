@@ -4,11 +4,15 @@
 .card {
     font-family: "Roboto", sans-serif;
     display: flex;
-    max-width: 100%;
+    gap: 5rem;
 }
 
 .titulo {
     font-size: 3rem;
+}
+
+.header {
+    width: 50%;
 }
 
 .descripcion {
@@ -26,20 +30,74 @@
 }
 
 .foto {
-    max-width: 100%;
-    box-sizing: border-box;
+    cursor: zoom-in;
+    width: 100%;
 }
 
 .boton {
-    background-color: #e5f656;
-    color: black;
-    font-size: 2rem;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
     font-family: "Roboto", sans-serif;
     font-weight: 700;
     padding: 2rem 4rem;
-    border-radius: 30px;
+    border-radius: 20px;
     margin-top: 3rem;
     border: transparent;
 }
 
+.menos {
+    color: red;
+}
+
+.botonfinalizar {
+    background-color: #e5f656;
+    color: black;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    padding: 2rem 4rem;
+    border-radius: 20px;
+    margin-top: 3rem;
+    border: transparent; 
+}
+
+.mas {
+    background-color: transparent;
+    color: black;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    padding: 2rem 2.5rem;
+    border-radius: 20px;
+    margin-top: 3rem;
+}
+
+.menos {
+    background-color: transparent;
+    color: black;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    padding: 2rem 2.5rem;
+    border-radius: 20px;
+    margin-top: 3rem;
+}
+
+.cantidad {
+    background-color: transparent;
+    color: black;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    padding: 2rem 2.2rem;
+    border-radius: 30px;
+    margin-top: 3rem;
+    border: transparent; 
+}
+
+.contador {
+    display: flex;
+    align-items: center;
+}
 

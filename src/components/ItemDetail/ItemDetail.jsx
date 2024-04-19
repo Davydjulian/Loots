@@ -36,12 +36,14 @@ const ButtonCount = ({ onAdd, stock, initial = 1 }) => {
     }
 
     return (
-        <div>
-            <p >{count}</p>
-            <button onClick={decrement}>-</button>
-            <button onClick={increment}>+</button>
-            <button onClick={() => onAdd(count)}>Agregar al carrito</button>
-        </div>
+        <section>
+            <div  className={styles.contador}>
+                <button className={styles.menos} onClick={decrement}>-</button>
+                <p className={styles.cantidad} >{count}</p>
+                <button className={styles.mas} onClick={increment}>+</button>
+            </div>
+            <button className={styles.boton} onClick={() => onAdd(count)}>Agregar al carrito</button>
+        </section>
     )
 }
 
@@ -71,7 +73,7 @@ const ItemDetail = ({ id, name, category, img, price, stock, description}) => {
 
     return (
         <article  className={styles.card}>
-            <header>
+            <header className={styles.header}>
                 <img className={styles.foto} src={img} alt={name}/>
             </header>
             <section>
@@ -87,18 +89,19 @@ const ItemDetail = ({ id, name, category, img, price, stock, description}) => {
                 </p>
                 <button className={styles.boton} onClick={() => setInputType(inputType === 'input' ? 'button' : 'input')}>
                 Cambiar contador
-            </button>
+                </button >
+
+                
                 {
                     !isInCart(id) ? (
                         <ItemCount onAdd={handleOnAdd} stock={stock}/>
                     ) : (
                         <>
-                            <Link to='/cart'>Finalizar compra</Link>
+                            <Link className={styles.botonfinalizar} to='/cart'>Finalizar compra</Link>
                         </>
                     )
                 }
-            </section>
-            
+            </section>   
         </article>
     )
 }
