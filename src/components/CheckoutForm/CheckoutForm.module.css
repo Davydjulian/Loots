@@ -1,0 +1,26 @@
+.formulario {
+    margin-left: 2rem;
+    gap: 2rem;
+}
+
+.input {
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    padding: 1.5rem 2rem;
+    border-radius: 20px;
+    border-color: black;
+    margin-right: 2rem;
+}
+
+.boton {
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    padding: 1.6rem 6rem;
+    border-radius: 20px;
+    border: transparent;
+}

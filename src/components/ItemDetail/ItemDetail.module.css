@@ -51,8 +51,7 @@
 }
 
 .botonfinalizar {
-    background-color: #e5f656;
-    color: black;
+    background-color: #000000;
     font-size: 1rem;
     font-family: "Roboto", sans-serif;
     font-weight: 700;
@@ -60,6 +59,7 @@
     border-radius: 20px;
     margin-top: 3rem;
     border: transparent; 
+    margin-left: 2rem;
 }
 
 .mas {

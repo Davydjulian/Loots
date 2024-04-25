@@ -1,0 +1,61 @@
+.pagar {
+    border-radius: 1rem;
+    padding: 1em 2em;
+    background-color: rgb(50, 50, 50);
+    font-size: 1.2rem;
+    margin-top: 3rem;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    max-width: 20%;
+}
+.eliminar {
+    display: inline-block;
+    border: none;
+    padding: 1rem 1.5rem;
+    margin: 0;
+    border-radius: 10px;
+    text-decoration: none;
+    background: #ff1937;
+    color: #ffffff;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, transform 150ms ease;
+}
+
+.cart {
+    font-family: "Roboto", sans-serif;
+    margin-top: 2rem;
+    margin-inline: 3rem;
+}
+
+.item {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    justify-content: space-between;
+}
+.producto {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    justify-content: space-between;
+}
+
+.titulo {
+    margin-bottom: 3rem;
+}
+
+.image {
+    max-width: 100%;
+}

@@ -3,6 +3,7 @@ import { CartContext } from "../../context/CartContext";
 import { getDocs, collection, query, where, writeBatch, addDoc, Timestamp } from "firebase/firestore";
 import { db } from "../../services/firebase/firebaseConfig";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
+import styles from './Checkout.module.css';
 
 const Checkout = () => {
     const [loading, setLoading] = useState(false);
@@ -39,7 +40,7 @@ const Checkout = () => {
             {orderId && <h1>El ID de su orden es: {orderId}</h1>}
             {!loading && !orderId && (
                 <>
-                    <h1>Checkout</h1>
+                    <h1 className={styles.titulo}>Checkout</h1>
                     <CheckoutForm createOrder={createOrder} />
                 </>
             )}
